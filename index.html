@@ -1,174 +1,267 @@
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Cab Booking System</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-<style>
-body{font-family:Arial;background:#f2f2f2;margin:0}
-header{background:#0b5ed7;color:#fff;text-align:center;padding:12px}
-.container{max-width:1100px;margin:auto;padding:15px}
-.card{background:#fff;padding:15px;margin-bottom:15px;border-radius:8px}
-input,select,button{padding:7px;margin:5px 0;width:100%}
-button{background:#198754;color:#fff;border:none;cursor:pointer}
-button:hover{opacity:0.9}
-table{width:100%;border-collapse:collapse}
-th,td{border:1px solid #ccc;padding:8px;text-align:left}
-th{background:#eee}
-.tab-btn{background:#6c757d;margin-right:5px}
-.active{background:#0b5ed7}
-.hidden{display:none}
-.status{font-weight:bold}
-</style>
+  <meta charset="UTF-8" />
+  <title>Jeyam Tours and Travels</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body{
+      margin:0;
+      font-family:Arial, Helvetica, sans-serif;
+      background:#f5f5f5;
+      color:#333;
+    }
+    header{
+      background:#f2c300; /* yellow */
+      color:#1b5e20; /* dark green */
+      padding:20px;
+    }
+    header .top{
+      display:flex;
+      justify-content:space-between;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+    header h1{
+      margin:0;
+      font-size:28px;
+      color:#1b5e20;
+    }
+    header p{
+      margin:5px 0 0;
+      font-size:14px;
+    }
+    nav{
+      margin-top:15px;
+    }
+    nav a{
+      color:#1b5e20;
+      text-decoration:none;
+      margin-right:15px;
+      font-weight:bold;
+    }
+    nav a:hover{
+      text-decoration:underline;
+    }
+    .hero{
+      background:linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee');
+      background-size:cover;
+      background-position:center;
+      color:#fff;
+      padding:80px 20px;
+      text-align:center;
+    }
+    .hero h2{
+      font-size:36px;
+      margin-bottom:10px;
+    }
+    .hero p{
+      font-size:18px;
+    }
+    section{
+      padding:40px 20px;
+      max-width:1100px;
+      margin:auto;
+      background:#fff;
+      margin-top:20px;
+      border-radius:8px;
+    }
+    section h2{
+      text-align:center;
+      color:#1b5e20;
+      margin-bottom:30px;
+    }
+    .services{
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(250px,1fr));
+      gap:20px;
+    }
+    .card{
+      background:#f9f9f9;
+      padding:20px;
+      border-radius:8px;
+      box-shadow:0 2px 6px rgba(0,0,0,0.1);
+      text-align:center;
+    }
+    .card img{
+      width:100%;
+      height:160px;
+      object-fit:cover;
+      border-radius:6px;
+      margin-bottom:10px;
+    }
+    .price{
+      color:#1b5e20;
+      font-weight:bold;
+      margin-top:8px;
+    }
+    .book-btn{
+      display:inline-block;
+      margin-top:10px;
+      padding:8px 14px;
+      background:#1b5e20;
+      color:#fff;
+      text-decoration:none;
+      border-radius:5px;
+      font-size:14px;
+    }
+    .book-btn:hover{opacity:0.9;}
+    .card h3{
+      color:#0b6b3a;
+      margin-bottom:10px;
+    }
+    .contact{
+      text-align:center;
+      font-size:16px;
+    }
+    .contact p{
+      margin:8px 0;
+    }
+    footer{
+      background:#1b5e20;
+      color:#fff;
+      text-align:center;
+      padding:15px;
+      margin-top:20px;
+      font-size:14px;
+    }
+    @media(max-width:600px){
+      header h1{font-size:22px;}
+      .hero h2{font-size:26px;}
+    }
+  </style>
 </head>
-
 <body>
 
 <header>
-<h2>🚖 Jeyam Travels – Booking System</h2>
+  <div class="top">
+    <div style="display:flex;align-items:center;gap:15px;">
+      <img src="jeyam logo.jpg" alt="Jeyam Tours and Travels Logo" style="height:70px;width:auto;" />
+      <div>
+        <h1>Jeyam Tours and Travels</h1>
+        <p>Comfortable • Reliable • Affordable</p>
+      </div>
+    </div>
+    <div>
+      <p>📞 9500471717</p>
+      <p>✉️ info.jeyamtravels@gmail.com</p>
+    </div>
+  </div>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#services">Services</a>
+    <a href="#vehicles">Our Vehicles</a>
+    <a href="#about">About Us</a>
+    <a href="#contact">Contact</a>
+  </nav>
 </header>
 
-<div class="container">
-
-<!-- NAV -->
-<button class="tab-btn active" onclick="showTab('customer')">Customer Dashboard</button>
-<button class="tab-btn" onclick="showTab('admin')">Admin Dashboard</button>
-
-<!-- CUSTOMER DASHBOARD -->
-<div id="customer" class="card">
-<h3>👤 Customer Dashboard</h3>
-
-<h4>Book a Cab</h4>
-<input id="c_name" placeholder="Name">
-<input id="c_mobile" placeholder="Mobile">
-<input id="c_pickup" placeholder="Pickup">
-<input id="c_drop" placeholder="Drop">
-<input id="c_date" type="date">
-<select id="c_cab">
-<option value="">Cab Type</option>
-<option value="Mini">Mini</option>
-<option value="Sedan">Sedan</option>
-<option value="SUV">SUV</option>
-</select>
-<input id="c_km" placeholder="KM">
-
-<button onclick="addBooking()">Book Now</button>
-
-<h4>My Bookings</h4>
-<table>
-<thead>
-<tr>
-<th>ID</th><th>Date</th><th>Route</th><th>Cab</th><th>Status</th>
-</tr>
-</thead>
-<tbody id="customerBookings"></tbody>
-</table>
+<div class="hero" id="home">
+  <h2>Your Trusted Travel Partner</h2>
+  <p>Safe & comfortable cab services for all your travel needs</p>
 </div>
 
-<!-- ADMIN DASHBOARD -->
-<div id="admin" class="card hidden">
-<h3>🧑‍💼 Admin Dashboard</h3>
+<section id="services">
+  <h2>Our Services</h2>
+  <div class="services">
+    <div class="card">
+      <h3>Local Cab Services</h3>
+      <p>Point-to-point and hourly rental services within the city.</p>
+    </div>
+    <div class="card">
+      <h3>Outstation Trips</h3>
+      <p>Comfortable long-distance travel with experienced drivers.</p>
+    </div>
+    <div class="card">
+      <h3>Airport Transfers</h3>
+      <p>On-time pickup and drop services for hassle-free travel.</p>
+    </div>
+    <div class="card">
+      <h3>Tour Packages</h3>
+      <p>Customized tour packages for families, groups & corporates.</p>
+    </div>
+  </div>
+</section>
 
-<table>
-<thead>
-<tr>
-<th>ID</th>
-<th>Customer</th>
-<th>Route</th>
-<th>Cab</th>
-<th>Status</th>
-<th>Driver</th>
-<th>Vehicle</th>
-<th>Action</th>
-</tr>
-</thead>
-<tbody id="adminBookings"></tbody>
-</table>
-</div>
+<section id="vehicles">
+  <h2>Our Vehicle Fleet</h2>
+  <div class="services">
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1619767886558-efdc259cde1a" alt="Swift Dzire">
+      <h3>Swift Dzire</h3>
+      <p>4 Seater • AC<br>Ideal for local & outstation trips.</p>
+      <div class="price">₹13 / km (Driver Bata Extra)</div>
+      <a class="book-btn" href="https://wa.me/919500471717?text=I%20want%20to%20book%20Swift%20Dzire">Book on WhatsApp</a>
+    </div>
+    <div class="card">
+      <img src="innova.jpeg" alt="Innova">
+      <h3>Toyota Innova</h3>
+      <p>7 Seater • AC<br>Comfortable family travel.</p>
+      <div class="price">₹17 / km (Driver Bata Extra)</div>
+      <a class="book-btn" href="https://wa.me/919500471717?text=I%20want%20to%20book%20Innova">Book on WhatsApp</a>
+    </div>
+    <div class="card">
+      <img src="innova crysta.png" alt="Innova Crysta">
+      <h3>Toyota Innova Crysta</h3>
+      <p>7 Seater • AC<br>Premium & luxury travel.</p>
+      <div class="price">₹19 / km (Driver Bata Extra)</div>
+      <a class="book-btn" href="https://wa.me/919500471717?text=I%20want%20to%20book%20Innova%20Crysta">Book on WhatsApp</a>
+    </div>
+    <div class="card">
+      <img src="tempo traveller12.jpeg" alt="Tempo Traveller 12 Seater">
+      <h3>Tempo Traveller (12 Seater)</h3>
+      <p>AC / Non-AC<br>Group tours & family trips.</p>
+      <div class="price">₹22 / km (Driver Bata Extra)</div>
+      <a class="book-btn" href="https://wa.me/919500471717?text=I%20want%20to%20book%2012%20Seater%20Tempo%20Traveller">Book on WhatsApp</a>
+    </div>
+    <div class="card">
+      <img src="tempo traveller14.jpeg" alt="Tempo Traveller 14 Seater">
+      <h3>Tempo Traveller (14 Seater)</h3>
+      <p>AC / Non-AC<br>Corporate & group travel.</p>
+      <div class="price">₹24 / km (Driver Bata Extra)</div>
+      <a class="book-btn" href="https://wa.me/919500471717?text=I%20want%20to%20book%2014%20Seater%20Tempo%20Traveller">Book on WhatsApp</a>
+    </div>
+  </div>
+  <p style="text-align:center;margin-top:20px;font-weight:bold;color:#1b5e20;">Well maintained vehicles • Experienced drivers • 24/7 support</p>
+</section>
 
-</div>
+<section id="about">
+  <h2>About Jeyam Tours and Travels</h2>
+  <p style="text-align:center; max-width:800px; margin:auto;">
+    Jeyam Tours and Travels is committed to providing safe, reliable and
+    affordable travel solutions. With well-maintained vehicles and
+    professional drivers, we ensure a pleasant journey for every customer.
+  </p>
+</section>
 
-<script>
-let bookings = JSON.parse(localStorage.getItem("bookings") || "[]");
+<section id="enquiry">
+  <h2>Quick Enquiry</h2>
+  <form style="max-width:500px;margin:auto;" onsubmit="alert('Thank you! We will contact you shortly.');return false;">
+    <input required placeholder="Your Name" style="width:100%;padding:10px;margin:8px 0;" />
+    <input required placeholder="Mobile Number" style="width:100%;padding:10px;margin:8px 0;" />
+    <input placeholder="Package Interested" style="width:100%;padding:10px;margin:8px 0;" />
+    <button style="width:100%;padding:10px;background:#1b5e20;color:#fff;border:none;border-radius:5px;">Submit Enquiry</button>
+  </form>
+</section>
 
-function showTab(tab){
-  document.getElementById("customer").classList.add("hidden");
-  document.getElementById("admin").classList.add("hidden");
-  document.getElementById(tab).classList.remove("hidden");
-}
+<section id="contact">
+  <h2>Contact Us</h2>
+  <div class="contact">
+    <p><strong>Phone:</strong> 9500471717</p>
+    <p><strong>Email:</strong> info.jeyamtravels@gmail.com</p>
+    <p><strong>Available:</strong> 24/7 Service</p>
+  </div>
+</section>
 
-function addBooking(){
-  const b = {
-    id: Date.now(),
-    name: c_name.value,
-    mobile: c_mobile.value,
-    pickup: c_pickup.value,
-    drop: c_drop.value,
-    date: c_date.value,
-    cab: c_cab.value,
-    km: c_km.value,
-    status: "Pending",
-    driver: "",
-    vehicle: ""
-  };
+<footer>
+  <p>© 2026 Jeyam Tours and Travels. All Rights Reserved.</p>
+</footer>
 
-  if(!b.name || !b.mobile || !b.pickup || !b.drop || !b.date || !b.cab){
-    alert("Fill all details");
-    return;
-  }
-
-  bookings.push(b);
-  localStorage.setItem("bookings", JSON.stringify(bookings));
-  alert("Booking Created");
-  render();
-}
-
-function render(){
-  customerBookings.innerHTML = "";
-  adminBookings.innerHTML = "";
-
-  bookings.forEach(b=>{
-    customerBookings.innerHTML += `
-      <tr>
-        <td>${b.id}</td>
-        <td>${b.date}</td>
-        <td>${b.pickup} → ${b.drop}</td>
-        <td>${b.cab}</td>
-        <td class="status">${b.status}</td>
-      </tr>
-    `;
-
-    adminBookings.innerHTML += `
-      <tr>
-        <td>${b.id}</td>
-        <td>${b.name}<br>${b.mobile}</td>
-        <td>${b.pickup} → ${b.drop}</td>
-        <td>${b.cab}</td>
-        <td>${b.status}</td>
-        <td><input value="${b.driver}" onchange="update(${b.id},'driver',this.value)"></td>
-        <td><input value="${b.vehicle}" onchange="update(${b.id},'vehicle',this.value)"></td>
-        <td>
-          <select onchange="update(${b.id},'status',this.value)">
-            <option ${b.status=='Pending'?'selected':''}>Pending</option>
-            <option ${b.status=='Confirmed'?'selected':''}>Confirmed</option>
-            <option ${b.status=='Completed'?'selected':''}>Completed</option>
-          </select>
-        </td>
-      </tr>
-    `;
-  });
-}
-
-function update(id, field, value){
-  const b = bookings.find(x=>x.id==id);
-  b[field] = value;
-  localStorage.setItem("bookings", JSON.stringify(bookings));
-  render();
-}
-
-render();
-</script>
+<a href="https://wa.me/919500471717" style="position:fixed;bottom:20px;right:20px;background:#25D366;color:#fff;padding:14px 16px;border-radius:50%;text-decoration:none;font-size:20px;">💬</a>
 
 </body>
 </html>
+
+
+
