@@ -6,43 +6,59 @@
 <title>Driver Training | Jeyam Tours and Travels</title>
 
 <style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial, Helvetica, sans-serif;
-}
-
 body{
-    background:#f5f5f5;
-}
-
-header{
-    background:#f2c300;
-    color:#1b5e20;
-    padding:20px;
-}
-
-header h1{
-    text-align:center;
-    margin-bottom:10px;
-}
-
-nav{
-    text-align:center;
-}
-
-nav a{
-    color:#1b5e20;
-    text-decoration:none;
-    margin:0 15px;
-    font-weight:bold;
-}
-
-nav a:hover{
-    text-decoration:underline;
-}
-
+      margin:0;
+      font-family:Arial, Helvetica, sans-serif;
+      background:#f5f5f5;
+      color:#333;
+    }
+    header{
+      background:#f2c300; /* yellow */
+      color:#1b5e20; /* dark green */
+      padding:20px;
+    }
+    header .top{
+      display:flex;
+      justify-content:space-between;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+    header h1{
+      margin:0;
+      font-size:28px;
+      color:#1b5e20;
+    }
+    header p{
+      margin:5px 0 0;
+      font-size:14px;
+    }
+    nav{
+      margin-top:15px;
+    }
+    nav a{
+      color:#1b5e20;
+      text-decoration:none;
+      margin-right:15px;
+      font-weight:bold;
+    }
+    nav a:hover{
+      text-decoration:underline;
+    }
+    .hero{
+      background:linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee');
+      background-size:cover;
+      background-position:center;
+      color:#fff;
+      padding:80px 20px;
+      text-align:center;
+    }
+    .hero h2{
+      font-size:36px;
+      margin-bottom:10px;
+    }
+    .hero p{
+      font-size:18px;
+    }
 .hero{
     background:linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.55)),
     url("driver training/IMG20260719132215.jpg");
